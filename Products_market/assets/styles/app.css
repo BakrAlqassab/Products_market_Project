@@ -44,8 +44,12 @@ button:focus {
 
 button:hover,
 button:active {
+  background: #540075;
+  /* color: #540075; */
   background: #790fa3;
   border-color: #790fa3;
+  /* font-size: 1.2rem; */
+  font-size: large;
 }
 
 .cart {
@@ -90,4 +94,5 @@ button:active {
 .product-item h2,
 .product-item h3 {
   margin: 0 0 1rem 0;
-}
+};
+
