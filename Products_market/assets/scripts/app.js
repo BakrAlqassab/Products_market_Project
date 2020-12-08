@@ -26,7 +26,6 @@ class Component {
   // Useless method to show that the this.render is refer for the Component class
   render() {}
   createRootElement(tag, cssClasses, attributes) {
-    // createRootElement(tag, cssClasses) {
     const rootElement = document.createElement(tag);
     if (cssClasses) {
       rootElement.className = cssClasses;
@@ -67,28 +66,23 @@ class ShoppingCart extends Component {
     super(renderHookId);
   }
   addProduct(product) {
-    // this.items.push(product);
     const updatedItems = [...this.items];
     updatedItems.push(product);
     this.cartItems = updatedItems;
   }
-  orderProduts(){
-
-
-
-    console.log(' Order is coming .............');
-     console.log(this.items)
+  orderProduts() {
+    console.log(" Order is coming .............");
+    console.log(this.items);
   }
 
   render() {
-    // const cartEl = document.createElement("section");
     const cartEl = this.createRootElement("section", "cart");
     cartEl.innerHTML = `
     <h2> Total : \$${0}</h2>
     <button>Order Now!</button> `;
-    // cartEl.className = "cart";
-    const orderButton = cartEl.querySelector('button');
-    orderButton.addEventListener('click',() => this.orderProduts())
+
+    const orderButton = cartEl.querySelector("button");
+    orderButton.addEventListener("click", () => this.orderProduts());
     this.totalOutput = cartEl.querySelector("h2");
   }
 }
@@ -100,14 +94,11 @@ class ProductItem extends Component {
     this.render();
   }
   addToCart() {
-    // console.log(" Adding product to cart ...");
-    // console.log(this.product);
     App.addProductToCart(this.product);
   }
   render() {
     const prodEl = this.createRootElement("li", "product-item");
-    // const prodEl = document.createElement("li");
-    // prodEl.className = "product-item";
+
     prodEl.innerHTML = `
         <div>
         <img  src ="${this.product.imageUrl}" alt =" ${this.product.title}">
@@ -121,7 +112,6 @@ class ProductItem extends Component {
         `;
     const addCartButton = prodEl.querySelector("button");
     addCartButton.addEventListener("click", this.addToCart.bind(this));
-    // return prodEl;
   }
 }
 class ProductList extends Component {
@@ -161,29 +151,12 @@ class ProductList extends Component {
     }
   }
   render() {
-    // const renderHook = document.getElementById("app");
-
     this.createRootElement("ul", "product-list", [
       new ElementAttributes("id", "prod-list"),
     ]);
     if (this.product && this.product.length > 0) {
       this.renderProduct();
     }
-    // prodList.id = 'prod-list';
-    // prodList.className = "product-list";
-
-    // const prodList = this.createRootElement('ul',)
-
-    // for (const prod of this.products) {
-    //   new ProductItem(prod, "prod-list");
-    //   // const productItem = new ProductItem(prod, "prod-list");
-    //   // const prodEl = productItem.render();
-    //   // productItem.render();
-
-    //   // prodList.append(prodEl);
-    // }
-    // return prodList;
-    // renderHook.append(prodList);
   }
 }
 
@@ -193,25 +166,18 @@ class Market {
     this.render();
   }
   render() {
-    // const renderHook = document.getElementById("app");
     // app initilazed as id to shopping cart contructor to trnsform to the inherit class
     this.cart = new ShoppingCart("app");
-    // this.cart.render();
-    // const productList = new ProductList("app");
-    new ProductList("app");
-    // const prodListEl = productList.render();
-    // productList.render();
 
-    // renderHook.append(prodListEl);
+    new ProductList("app");
   }
 }
 
 class App {
   static cart;
   static init() {
-     const market = new Market();
-    // new Market();
-    // market.render();
+    const market = new Market();
+
     this.cart = market.cart;
   }
   static addProductToCart(product) {
